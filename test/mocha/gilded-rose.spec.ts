@@ -59,7 +59,7 @@ describe('Gilded Rose', () => {
 
   // An item that is backstage
   // each day: [if SellIn < 11] +1 Quality (up to 50); [if SellIn <6] +2 Quality; [if SellIn < 5] +3 Quality; [if SellIn < 0] Quality = 0
-  it.only('Backstage increases by 1 when SellIn is > 10', () =>{
+  it('Backstage increases by 1 when SellIn is > 10', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 20, 12)]);
     const items = gildedRose.updateQuality();
 
@@ -68,7 +68,7 @@ describe('Gilded Rose', () => {
     expect(items[0].quality).to.equal(13);
   });
 
-  it.only('Backstage increases by 2 when SellIn is <= 10', () =>{
+  it('Backstage increases by 2 when SellIn is <= 10', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 10, 33)]);
     const items = gildedRose.updateQuality();
 
@@ -77,7 +77,7 @@ describe('Gilded Rose', () => {
     expect(items[0].quality).to.equal(35);
   });
 
-  it.only('Backstage increases by 3 when SellIn is <= 5', () =>{
+  it('Backstage increases by 3 when SellIn is <= 5', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 5, 42)]);
     const items = gildedRose.updateQuality();
 
@@ -86,7 +86,7 @@ describe('Gilded Rose', () => {
     expect(items[0].quality).to.equal(45);
   });
 
-  it.only('Backstage Quality is 0 when SellIn is <= 0', () =>{
+  it('Backstage Quality is 0 when SellIn is <= 0', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 0, 42)]);
     const items = gildedRose.updateQuality();
 
@@ -95,7 +95,7 @@ describe('Gilded Rose', () => {
     expect(items[0].quality).to.equal(0);
   });
 
-  it.only('Backstage Quality does not go over 50', () =>{
+  it('Backstage Quality does not go over 50', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 3, 49)]);
     const items = gildedRose.updateQuality();
 
@@ -104,7 +104,7 @@ describe('Gilded Rose', () => {
     expect(items[0].quality).to.equal(50);
   });
 
-  it.only('Backstage max Quality 50', () =>{
+  it('Backstage max Quality 50', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 3, 50)]);
     const items = gildedRose.updateQuality();
 
@@ -114,7 +114,7 @@ describe('Gilded Rose', () => {
   });
 
   //TO BE IMPLEMENTED IN REFACTORING > throw error if quality is >50
-  it.only('Backstage cannot increase after 50', () =>{
+  it('Backstage cannot increase after 50', () =>{
     const gildedRose = new GildedRose([new Item('Backstage passes to a TAFKAL80ETC concert', 4, 51)]);
     const items = gildedRose.updateQuality();
 
@@ -125,7 +125,7 @@ describe('Gilded Rose', () => {
 
   // An item that is sulfuras
   // always Quantity === 80
-  it.only('Sulfuras does not change', () => {
+  it('Sulfuras does not change', () => {
     const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 0, 80)]);
     const items = gildedRose.updateQuality();
 
@@ -133,7 +133,7 @@ describe('Gilded Rose', () => {
     expect(items[0].sellIn).to.equals(0);
   });
   
-  it.only('Sulfuras does not change', () => {
+  it('Sulfuras does not change', () => {
     const gildedRose = new GildedRose([new Item('Sulfuras, Hand of Ragnaros', 20, 80)]);
     const items = gildedRose.updateQuality();
 

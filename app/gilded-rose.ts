@@ -64,14 +64,14 @@ export class GildedRose {
               case (this.items[i].sellIn <= 0):
                 this.items[i].quality = 0
                 break;
-              case (this.items[i].sellIn <= 5):
-                this.items[i].quality++
-                break;
-              case (this.items[i].sellIn <= 10):
-                this.items[i].quality++
-                break;
               case (this.items[i].sellIn > 0):
-                this.items[i].quality++
+                this.items[i].quality++;
+                if (this.items[i].sellIn <= 5 && this.items[i].quality < 50) {
+                  this.items[i].quality++;
+                }
+                if (this.items[i].sellIn <= 10 && this.items[i].quality < 50) {
+                  this.items[i].quality++;
+                }
                 break;
             }
           }
@@ -79,9 +79,20 @@ export class GildedRose {
           break;
 
         case 'Aged Brie':
+          if (this.items[i].quality < 50) {
+            this.items[i].quality++;
+          }  
+          this.items[i].sellIn--;
           break;
 
         default:
+          if (this.items[i].quality > 0) {
+            this.items[i].quality--;
+            if (this.items[i].sellIn <= 0) {
+              this.items[i].quality--;
+            }
+          }
+          this.items[i].sellIn--;
           break;
       }
     
